@@ -223,20 +223,26 @@ if __name__ == "__main__":
     caption = "Сапер"
     ms = Minesweeper(caption)
     start = time.perf_counter()
-    while ms.run() != Minesweeper.WIN:
+    while True:
 
-        print(
-            str.format(
-                "Bombed! ({:.3f}s.)",
-                time.perf_counter() - start,
+        if ms.run() == Minesweeper.WIN:
+
+            print(
+                str.format(
+                    "Win! ({:.3f}s.)",
+                    time.perf_counter() - start,
+                )
             )
-        )
+            time.sleep(5)
+
+        else:
+
+            print(
+                str.format(
+                    "Bombed! ({:.3f}s.)",
+                    time.perf_counter() - start,
+                )
+            )
+
         ms.new_game()
         start = time.perf_counter()
-
-    print(
-        str.format(
-            "Win! ({:.3f}s.)",
-            time.perf_counter() - start,
-        )
-    )
